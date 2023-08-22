@@ -8,10 +8,10 @@ import { PostService } from '../services/post.service';
 })
 export class PostComponent {
   posts!: any[];
-  constructor(private poseServices: PostService) {}
+  constructor(private poseServices: PostService) { }
   ngOnInit() {
-    this.poseServices.getAll().subscribe(
-      (data: any[]) => {
+    this.poseServices.getAll<any[]>().subscribe(
+      (data) => {
         this.posts = data;
       },
       (error) => {

@@ -4,8 +4,8 @@ import { catchError, throwError } from 'rxjs';
 
 export class DataService {
   constructor(private url: string, private http: HttpClient) {}
-  getAll() {
-    return this.http.get<any[]>(this.url).pipe(catchError(this.handleError));
+  getAll<T>() {
+    return this.http.get<T>(this.url).pipe(catchError(this.handleError));
   }
   create(post: HTMLInputElement) {
     return this.http.post(this.url, JSON.stringify(post));

@@ -1,4 +1,4 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'navbar',
@@ -6,4 +6,8 @@ import { Component, Input, NgModule } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+  isExpanded = false;
+  expand_Toggle() {
+    this.isExpanded = !this.isExpanded;
+  }
 }

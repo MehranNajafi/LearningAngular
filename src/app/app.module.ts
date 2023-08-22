@@ -26,10 +26,18 @@ import { GithubfollowersComponent } from './githubfollowers/githubfollowers.comp
 import { HomeComponent } from './home/home.component';
 import { Router, RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { LoginComponent } from './login/login.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { TableOverviewExampleComponent } from './table-overview-example/table-overview-example.component';
 
 @NgModule({
   declarations: [
@@ -52,23 +60,26 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     GithubfollowersComponent,
     HomeComponent,
     NavbarComponent,
+    LoginComponent,
+    TableOverviewExampleComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: 'home', component: HomeComponent },
+      { path: '', component: HomeComponent },
       { path: 'followers/:id/:username', component: GithubfollowersComponent },
       { path: 'followers', component: FollowersComponent },
       { path: 'posts', component: PostComponent },
       { path: '**', component: NotfoundComponent },
     ]),
-    [MatToolbarModule, MatButtonModule, MatIconModule],
+    [MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatTableModule, MatSortModule, MatPaginatorModule],
   ],
   providers: [CoursesService, TeachersService, PostService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

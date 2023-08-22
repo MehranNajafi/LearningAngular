@@ -1,13 +1,40 @@
-<div *ngFor="let follower of followers" class="media">
-  <div class="media-left">
-    <a href="#">
-      <img class="avatar media-object" src="{{ follower.avatar_url }}" alt="...">
-    </a>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading">
-      <a [routerLink]="['/followers',follower.id,follower.login]">{{ follower.login }}</a>
-    </h4>
-    <a href="follower.html_url">{{ follower.html_url }}</a>
-  </div>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="AvatarLink">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+      <td mat-cell *matCellDef="let row"> <img class="avatar media-object" src="{{ row.avatar_url }}" alt="..."></td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.login}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="GitHubLink">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> GitHubLink </th>
+      <td mat-cell *matCellDef="let row"> {{row.html_url}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+<mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+</mat-paginator>
 </div>
