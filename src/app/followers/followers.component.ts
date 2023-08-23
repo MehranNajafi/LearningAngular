@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, ViewChild } from '@angular/core';
 import { FollowersService } from '../services/followers.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,16 +10,12 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './followers.component.html',
   styleUrls: ['./followers.component.css'],
 })
-export class FollowersComponent implements AfterViewInit {
+export class FollowersComponent {
   constructor(
     private router: ActivatedRoute,
     private service: FollowersService
-  ) {
-    this.service
-      .getAll<IGitHubFollowerDetail[]>()
-      .subscribe((followers) =>
-        this.dataSource = new MatTableDataSource(followers));
-  }
+  ) {}
+
   followers!: IGitHubFollowerDetail[];
   displayedColumns: string[] = ['Id', 'AvatarLink', 'Name', 'GitHubLink'];
   dataSource!: MatTableDataSource<IGitHubFollowerDetail>;
@@ -27,12 +23,17 @@ export class FollowersComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit() {
+    this.service.getAll<IGitHubFollowerDetail[]>().subscribe((followers) => {
+      this.followers = followers;
+      this.dataSource = new MatTableDataSource<IGitHubFollowerDetail>(
+        this.followers
+      );
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      console.log(this.dataSource.sort);
+    });
+  }
 
-  }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -40,6 +41,11 @@ export class FollowersComponent implements AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  sortdata(sort: MatSort) {
+    console.log(sort);
+    this.dataSource.sort = sort;
   }
 }
 export interface IGitHubFollowerDetail {
