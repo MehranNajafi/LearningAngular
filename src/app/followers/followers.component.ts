@@ -14,7 +14,7 @@ export class FollowersComponent {
   constructor(
     private router: ActivatedRoute,
     private service: FollowersService
-  ) {}
+  ) { }
 
   followers!: IGitHubFollowerDetail[];
   displayedColumns: string[] = ['Id', 'AvatarLink', 'Name', 'GitHubLink'];
