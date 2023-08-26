@@ -14,13 +14,13 @@ export class FollowersComponent {
   constructor(
     private router: ActivatedRoute,
     private service: FollowersService
-  ) {}
+  ) { }
 
-  followers!: IGitHubFollowerDetail[];
-  displayedColumns: string[] = ['Id', 'AvatarLink', 'Name', 'GitHubLink'];
-  dataSource!: MatTableDataSource<IGitHubFollowerDetail>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  followers: IGitHubFollowerDetail[];
+  displayedColumns: string[] = ['id', 'avatar_url', 'login', 'html_url'];
+  dataSource: MatTableDataSource<IGitHubFollowerDetail>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
     this.service.getAll<IGitHubFollowerDetail[]>().subscribe((followers) => {
@@ -30,7 +30,7 @@ export class FollowersComponent {
       );
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      console.log(this.dataSource.sort);
+      //console.log(this.dataSource.sort);
     });
   }
 
@@ -41,11 +41,6 @@ export class FollowersComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  sortdata(sort: MatSort) {
-    console.log(sort);
-    this.dataSource.sort = sort;
   }
 }
 export interface IGitHubFollowerDetail {
