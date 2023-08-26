@@ -30,7 +30,6 @@ export class FollowersComponent {
       );
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      console.log(this.dataSource.sort);
     });
   }
 
@@ -41,11 +40,6 @@ export class FollowersComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  sortdata(sort: MatSort) {
-    console.log(sort);
-    this.dataSource.sort = sort;
   }
 }
 export interface IGitHubFollowerDetail {
