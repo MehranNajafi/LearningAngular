@@ -17,7 +17,7 @@ export class FollowersComponent {
   ) { }
 
   followers!: IGitHubFollowerDetail[];
-  displayedColumns: string[] = ['Id', 'AvatarLink', 'Name', 'GitHubLink'];
+  displayedColumns: string[] = ['id', 'avatar_url', 'login', 'html_url'];
   dataSource!: MatTableDataSource<IGitHubFollowerDetail>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
