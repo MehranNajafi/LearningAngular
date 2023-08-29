@@ -20,7 +20,8 @@
                                 <mat-label>رمز عبور</mat-label>
                                 <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
                                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'عدم نمایش'"
-                                    [attr.aria-pressed]="hide">
+                                    [attr.aria-pressed]="hide"
+                                    class="mat-icon-button">
                                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
                                 <mat-error *ngIf="password?.errors?.['required']">رمز عبور را وارد نمائید</mat-error>
