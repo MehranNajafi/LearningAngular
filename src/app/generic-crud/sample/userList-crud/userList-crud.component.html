@@ -1,0 +1,8 @@
+<div class="container">
+  <input (keyup.enter)="createUser(title)" #title type="text" class="form-control">
+  <ul class="list-group">
+    <li *ngFor="let user of users" class="list-group-item">
+      <user [inputUser]=user (deleteItemEvent)="deleteUser($event)" (updateItemEvent)="updateUser($event)"></user>
+    </li>
+  </ul>
+</div>
