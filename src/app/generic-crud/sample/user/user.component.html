@@ -1,0 +1,16 @@
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>userName</th>
+            <th>email</th>
+            <th>password</th>
+        </tr>
+        <tr>
+            <td>{{inputUser.userName}}</td>
+            <td>{{inputUser.email}}</td>
+            <td>{{inputUser.passs}}</td>
+            <td><button (click)="update(inputUser)" color="primary">Update</button></td>
+            <td><button (click)="delete(inputUser)" color="primary">Delete</button></td>
+        </tr>
+    </table>
+</div>
