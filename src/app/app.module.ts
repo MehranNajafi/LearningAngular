@@ -38,8 +38,6 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { TableOverviewExampleComponent } from './table-overview-example/table-overview-example.component';
-import { PopperDirective } from './popper.directive';
-import { PopperrxampleComponent } from './popperrxample/popperrxample.component';
 
 @NgModule({
   declarations: [
@@ -63,9 +61,7 @@ import { PopperrxampleComponent } from './popperrxample/popperrxample.component'
     HomeComponent,
     NavbarComponent,
     LoginComponent,
-    TableOverviewExampleComponent,
-    PopperDirective,
-    PopperrxampleComponent,
+    TableOverviewExampleComponent
   ],
   imports: [
     BrowserModule,
