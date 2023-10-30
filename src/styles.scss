@@ -10,15 +10,15 @@ body {
 }
 
 @font-face {
-  font-family: 'IranSans';
-  /* Choose a name for your font */
-  /* src: url('path/to/font.woff2') format('woff2'), */
-  src: url('./app/font/Sans/Sans.woff') format('woff');
-  /* Include additional font formats as needed */
+  font-family: 'Vazirmatn';
+//   /* Choose a name for your font */
+//   /* src: url('path/to/font.woff2') format('woff2'), */
+  src: url('../node_modules/vazirmatn/misc/Farsi-Digits-Non-Latin/fonts/webfonts/Vazirmatn-FD-NL-Regular.woff2') format('woff2');
+//   /* Include additional font formats as needed */
   font-weight: normal;
   font-style: normal;
 }
 $custom-typography: mat-typography-config(
-  $font-family: 'IranSans'
+  $font-family: 'Vazirmatn'
 );
 @include angular-material-typography($custom-typography);

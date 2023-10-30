@@ -7,7 +7,7 @@
                     <h4 class="mb-3">ورود</h4>
                 </div>
                 <div class="card-body">
-                    <form class="mx-2" [formGroup]="form">
+                    <form class="mx-2" [formGroup]="form" (ngSubmit)="signIn(form.value)">
                         <div>
                             <mat-form-field class="w-100 p-3">
                                 <mat-label>نام کاربری</mat-label>
