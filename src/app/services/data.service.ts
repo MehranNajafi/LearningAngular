@@ -9,7 +9,7 @@ import { Observable, catchError, of, throwError } from 'rxjs';
 import { IRequest } from '../request/request.component';
 
 export class DataService {
-  constructor(private url: string, private http: HttpClient) {}
+  constructor(private url: string, private http: HttpClient) { }
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -20,6 +20,9 @@ export class DataService {
   };
   getAll<T>() {
     return this.http.get<T>(this.url).pipe(catchError(this.handleError));
+  }
+  getAllOdata<T>(param: string) {
+    return this.http.get<T>(this.url + param).pipe(catchError(this.handleError));
   }
   requests$ = [
     { id: 1, subject: 'تست 1', kind: 1, team: 1, project: 1, status: 1 },
