@@ -1,0 +1,7 @@
+<h1>Angular Lookup Select with Material</h1>
+<lookup [options]="inputData" (itemSelected)="onItemSelected($event)"></lookup>
+
+<div *ngIf="selectedItem">
+  <h2>Selected Item:</h2>
+  <p>{{ selectedItem.name }}</p>
+</div>
