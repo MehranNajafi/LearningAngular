@@ -34,15 +34,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatPaginator, MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { TableOverviewExampleComponent } from './table-overview-example/table-overview-example.component';
-import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { LogTestComponent } from './log-test/log-test.component';
-import { MatSelectModule } from '@angular/material/select';
-import { RequestComponent } from './request/request.component';
-import { CustomMatPaginatorIntl } from './request/custom-mat-paginator-intl';
+import { PopperDirective } from './popper.directive';
+import { PopperrxampleComponent } from './popperrxample/popperrxample.component';
 
 @NgModule({
   declarations: [
@@ -67,8 +64,8 @@ import { CustomMatPaginatorIntl } from './request/custom-mat-paginator-intl';
     NavbarComponent,
     LoginComponent,
     TableOverviewExampleComponent,
-    LogTestComponent,
-    RequestComponent
+    PopperDirective,
+    PopperrxampleComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,20 +75,15 @@ import { CustomMatPaginatorIntl } from './request/custom-mat-paginator-intl';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      // { path: '', component: HomeComponent },
-      // { path: 'followers/:id/:username', component: GithubfollowersComponent },
-      // { path: 'followers', component: FollowersComponent },
-      // { path: 'posts', component: PostComponent },
-      // { path: '**', component: NotfoundComponent },
+      { path: '', component: HomeComponent },
+      { path: 'followers/:id/:username', component: GithubfollowersComponent },
+      { path: 'followers', component: FollowersComponent },
+      { path: 'posts', component: PostComponent },
+      { path: '**', component: NotfoundComponent },
     ]),
-    [MatSelectModule, MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatTableModule, MatSortModule],
-    LoggerModule.forRoot({ serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR })
+    [MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatTableModule, MatSortModule, MatPaginatorModule],
   ],
-  providers: [CoursesService, TeachersService, PostService,
-     {
-    provide: MatPaginatorIntl,
-    useClass: CustomMatPaginatorIntl
-  }],
+  providers: [CoursesService, TeachersService, PostService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

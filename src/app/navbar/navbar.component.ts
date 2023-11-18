@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  is_expanded = false;
+  isExpanded = false;
   expand_Toggle() {
-    this.is_expanded = !this.is_expanded;
+    this.isExpanded = !this.isExpanded;
   }
 }

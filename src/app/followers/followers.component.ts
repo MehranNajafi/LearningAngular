@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import buildQuery from 'odata-query';
 
 @Component({
   selector: 'followers',
@@ -23,32 +22,15 @@ export class FollowersComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  ngAfterViewInit() {
-    this.loadfollowers(1, this.paginator.pageSize);
-    this.sort.sortChange.subscribe(() => {
-      this.loadfollowers(1, this.paginator.pageSize);
+  ngOnInit() {
+    this.service.getAll<IGitHubFollowerDetail[]>().subscribe((followers) => {
+      this.followers = followers;
+      this.dataSource = new MatTableDataSource<IGitHubFollowerDetail>(
+        this.followers
+      );
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
-  }
-
-  loadfollowers(page: number, itemsPerPage: number) {
-    if (this.paginator) {
-      const top = itemsPerPage;
-      const skip = itemsPerPage * (page - 1);
-      const sortDirection = this.sort.direction || 'asc';
-      const sortActive = this.sort.active || 'id';
-      const orderBy = [sortActive + ' ' + sortDirection];
-      this.service.getAllOdata<IGitHubFollowerDetail[]>(buildQuery({ top, skip, orderBy })).subscribe((followers) => {
-        this.followers = followers;
-        this.dataSource = new MatTableDataSource<IGitHubFollowerDetail>(
-          this.followers
-        );
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-      });
-    }
-  }
-  onPaginatorChange(event: any) {
-    this.loadfollowers(event.pageIndex + 1, event.pageSize);
   }
 
   applyFilter(event: Event) {

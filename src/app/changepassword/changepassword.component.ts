@@ -11,19 +11,18 @@ export class ChangepasswordComponent {
   form;
   constructor(fb: FormBuilder) {
     this.form = fb.group({
-        oldPassword: [
-          '',
-          Validators.required,
-          OldPasswordValidators.inValidOldPass,
-        ],
-        newPassword: ['', Validators.required],
-        confirmPassword: ['', Validators.required],
-      },
-      { Validators: OldPasswordValidators.passworldShouldMatch }
-    );
-  }
-  onclick(){
-    console.log(OldPasswordValidators.passworldShouldMatch);
+      oldPassword: [
+        '',
+        Validators.required,
+        OldPasswordValidators.inValidOldPass,
+      ],
+      newPassword: ['', Validators.required],
+      confirmPassword: [
+        '',
+        Validators.required,
+        OldPasswordValidators.passworldShouldMatch,
+      ],
+    });
   }
   get oldPassword() {
     return this.form.get('oldPassword');
