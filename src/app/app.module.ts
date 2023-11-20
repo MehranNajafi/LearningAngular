@@ -38,8 +38,18 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { TableOverviewExampleComponent } from './table-overview-example/table-overview-example.component';
+<<<<<<< Updated upstream
 import { PopperDirective } from './popper.directive';
 import { PopperrxampleComponent } from './popperrxample/popperrxample.component';
+=======
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { LogTestComponent } from './log-test/log-test.component';
+import { MatSelectModule } from '@angular/material/select';
+import { RequestComponent } from './request/request.component';
+import { CustomMatPaginatorIntl } from './request/custom-mat-paginator-intl';
+import { RequestDialogComponent } from './request-dialog/request-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -64,8 +74,14 @@ import { PopperrxampleComponent } from './popperrxample/popperrxample.component'
     NavbarComponent,
     LoginComponent,
     TableOverviewExampleComponent,
+<<<<<<< Updated upstream
     PopperDirective,
     PopperrxampleComponent,
+=======
+    LogTestComponent,
+    RequestComponent,
+    RequestDialogComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -81,7 +97,12 @@ import { PopperrxampleComponent } from './popperrxample/popperrxample.component'
       { path: 'posts', component: PostComponent },
       { path: '**', component: NotfoundComponent },
     ]),
+<<<<<<< Updated upstream
     [MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatTableModule, MatSortModule, MatPaginatorModule],
+=======
+    [MatSelectModule, MatDialogModule, MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatTableModule, MatSortModule],
+    LoggerModule.forRoot({ serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR })
+>>>>>>> Stashed changes
   ],
   providers: [CoursesService, TeachersService, PostService],
   bootstrap: [AppComponent],

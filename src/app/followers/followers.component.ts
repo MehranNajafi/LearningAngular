@@ -4,6 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+<<<<<<< Updated upstream
+=======
+import buildQuery from 'odata-query';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestDialogComponent } from '../request-dialog/request-dialog.component';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'followers',
@@ -13,7 +19,8 @@ import { MatSort } from '@angular/material/sort';
 export class FollowersComponent {
   constructor(
     private router: ActivatedRoute,
-    private service: FollowersService
+    private service: FollowersService,
+    private dialog: MatDialog
   ) { }
 
   followers!: IGitHubFollowerDetail[];
@@ -40,6 +47,11 @@ export class FollowersComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  openRequestDialog(){
+     this.dialog.open(RequestDialogComponent, {
+      width: '400px', // Adjust the width as needed
+    });
   }
 }
 export interface IGitHubFollowerDetail {
