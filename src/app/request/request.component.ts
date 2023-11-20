@@ -4,17 +4,15 @@ import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { ProjectService } from '../project/project.service';
 import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'request',
   templateUrl: './request.component.html',
-  styleUrls: ['./request.component.css'],
 })
 export class RequestComponent {
+  requests: IRequest[] | undefined;
   constructor(
-    private projectService: ProjectService,
     private service: FollowersService,
     private dialogService: DialogService
   ) {}
@@ -30,14 +28,10 @@ export class RequestComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  requests = this.service.requests$;
-  projects = this.projectService.projects$;
+
   projectMap: { [id: string]: string } = {};
 
   ngOnInit() {
-    this.projects.forEach(project => {
-      this.projectMap[project.id] = project.subject;
-    });
     this.dataSource = new MatTableDataSource<IRequest>(this.requests);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

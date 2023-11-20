@@ -4,12 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-<<<<<<< Updated upstream
-=======
-import buildQuery from 'odata-query';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestDialogComponent } from '../request-dialog/request-dialog.component';
->>>>>>> Stashed changes
 
 @Component({
   selector: 'followers',

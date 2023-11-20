@@ -13,7 +13,6 @@ import { TwoincricleComponent } from './twoincricle/twoincricle.component';
 import { AngContentComponent } from './ang-content/ang-content.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { InputFormatDirective } from './directives/input-format.directive';
-import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { NewCourseComponentComponent } from './new-course-component/new-course-component.component';
@@ -38,18 +37,14 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { TableOverviewExampleComponent } from './table-overview-example/table-overview-example.component';
-<<<<<<< Updated upstream
 import { PopperDirective } from './popper.directive';
 import { PopperrxampleComponent } from './popperrxample/popperrxample.component';
-=======
-import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { LogTestComponent } from './log-test/log-test.component';
 import { MatSelectModule } from '@angular/material/select';
 import { RequestComponent } from './request/request.component';
-import { CustomMatPaginatorIntl } from './request/custom-mat-paginator-intl';
 import { RequestDialogComponent } from './request-dialog/request-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
->>>>>>> Stashed changes
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -61,7 +56,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     AngContentComponent,
     DirectivesComponent,
     InputFormatDirective,
-    ZippyComponent,
     ContactFormComponent,
     SignupFormComponent,
     NewCourseComponentComponent,
@@ -74,14 +68,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     NavbarComponent,
     LoginComponent,
     TableOverviewExampleComponent,
-<<<<<<< Updated upstream
     PopperDirective,
     PopperrxampleComponent,
-=======
-    LogTestComponent,
     RequestComponent,
     RequestDialogComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -89,7 +79,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    CKEditorModule,
     HttpClientModule,
+    NgxEditorModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'followers/:id/:username', component: GithubfollowersComponent },
@@ -97,12 +89,45 @@ import { MatDialogModule } from '@angular/material/dialog';
       { path: 'posts', component: PostComponent },
       { path: '**', component: NotfoundComponent },
     ]),
-<<<<<<< Updated upstream
-    [MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatTableModule, MatSortModule, MatPaginatorModule],
-=======
-    [MatSelectModule, MatDialogModule, MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatTableModule, MatSortModule],
-    LoggerModule.forRoot({ serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR })
->>>>>>> Stashed changes
+    NgxEditorModule.forRoot({
+      locals: {
+        // menu
+        bold: 'Bold',
+        italic: 'Italic',
+        code: 'Code',
+        underline: 'Underline',
+        strike: 'Strike',
+        blockquote: 'Blockquote',
+        bullet_list: 'Bullet List',
+        ordered_list: 'Ordered List',
+        heading: 'Heading',
+        h1: 'Header 1',
+        h2: 'Header 2',
+        h3: 'Header 3',
+        h4: 'Header 4',
+        h5: 'Header 5',
+        h6: 'Header 6',
+        align_left: 'Left Align',
+        align_center: 'Center Align',
+        align_right: 'Right Align',
+        align_justify: 'Justify',
+        text_color: 'Text Color',
+        background_color: 'Background Color',
+        insertLink: 'Insert Link',
+        removeLink: 'Remove Link',
+        insertImage: 'Insert Image',
+    
+        // pupups, forms, others...
+        url: 'URL',
+        text: 'Text',
+        openInNewTab: 'Open in new tab',
+        insert: 'Insert',
+        altText: 'Alt Text',
+        title: 'Title',
+        remove: 'Remove',
+      },
+    }),
+    [MatSelectModule, MatDialogModule, MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatTableModule, MatSortModule]
   ],
   providers: [CoursesService, TeachersService, PostService],
   bootstrap: [AppComponent],
