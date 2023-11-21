@@ -19,13 +19,31 @@ export class RequestDialogComponent {
     ['text_color', 'background_color'],
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
+  selectedFile: File | null = null;
 
+  onFileSelected(event: any) {
+    const fileList: FileList | null = event.target.files;
+    if (fileList && fileList.length > 0) {
+      this.selectedFile = fileList[0];
+      this.readFileContents(this.selectedFile);
+    } else {
+      this.selectedFile = null;
+    }
+  }
+  readFileContents(file: File) {
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      const fileBytes: Uint8Array = new Uint8Array(e.target.result);
+      console.log('File Bytes:', fileBytes);
+    };
+
+    reader.readAsArrayBuffer(file);
+  }
   ngOnInit(): void {
     this.editor = new Editor();
   }
-  editorConfig = {
-    rtl: true, // Enable RTL support
-    placeholder: 'Enter text here...',
-    height: '500px', // Set editor height
-  };
+  ngOnDestroy(): void {
+    this.editor.destroy();
+  }
 }
