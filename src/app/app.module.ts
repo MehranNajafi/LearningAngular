@@ -40,7 +40,15 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { TableOverviewExampleComponent } from './table-overview-example/table-overview-example.component';
 import { PopperDirective } from './popper.directive';
 import { PopperrxampleComponent } from './popperrxample/popperrxample.component';
-
+import { LookupComponent } from './lookup/lookup.component';
+import { LookupSampleComponent } from './lookup/lookup-sample/lookup-sample.component';
+import { MatSelectModule } from '@angular/material/select';
+import { SearchPipe } from './lookup/search.Pipe';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { RequestComponent } from './request/request.component';
+import { CustomMatPaginatorIntl } from './request/custom-mat-paginator-intl';
+import { RequestDialogComponent } from './request-dialog/request-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +74,11 @@ import { PopperrxampleComponent } from './popperrxample/popperrxample.component'
     TableOverviewExampleComponent,
     PopperDirective,
     PopperrxampleComponent,
+    LookupComponent,
+    LookupSampleComponent,
+    SearchPipe,
+    RequestComponent,
+    RequestDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +94,7 @@ import { PopperrxampleComponent } from './popperrxample/popperrxample.component'
       { path: 'posts', component: PostComponent },
       { path: '**', component: NotfoundComponent },
     ]),
-    [MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatTableModule, MatSortModule, MatPaginatorModule],
+    [MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatTableModule, MatSortModule, MatPaginatorModule, MatSelectModule],
   ],
   providers: [CoursesService, TeachersService, PostService],
   bootstrap: [AppComponent],

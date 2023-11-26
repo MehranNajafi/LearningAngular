@@ -8,15 +8,16 @@ import { Item } from '../item.model';
 })
 export class LookupSampleComponent {
 
-  selectedItem: Item | undefined;
-
   inputData: Item[] = [
-    new Item(1, 'Item A'),
-    new Item(2, 'Item B'),
-    new Item(3, 'Item C')
+    new Item(1, 'ItemA'),
+    new Item(2, 'ItemB'),
+    new Item(3, 'ItemC')
   ];
+
+  selectedItem: Item;
 
   onItemSelected(item: Item): void {
     this.selectedItem = item;
+    console.log(item);
   }
 }

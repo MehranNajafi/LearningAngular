@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Item } from './item.model';
 import { FormControl } from '@angular/forms';
-import { MatSelectChange } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'lookup',
@@ -13,24 +13,27 @@ export class LookupComponent implements OnInit {
   @Output() itemSelected = new EventEmitter<Item>();
 
   searchControl = new FormControl();
-
   filteredOptions: Item[] = [];
+  searchTxt: any;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     this.filteredOptions = this.options;
-    this.searchControl.valueChanges.subscribe((value: string) => {
+    this.searchControl.valueChanges.subscribe((value: Item) => {
       this.filteredOptions = this.filterOptions(value);
     });
   }
-
-  onSelectChange(event: MatSelectChange): void {
-    this.itemSelected.emit(event.value);
+  onSelectChange(event: Item): void {
+    this.itemSelected.emit(event);
+  }
+  onClosed() {
+    this.searchTxt = null;
+    this.filteredOptions = this.filterOptions(new Item(-1, ''));
   }
 
-  private filterOptions(value: string): Item[] {
-    const filterValue = value.toLowerCase();
+  private filterOptions(value: Item): Item[] {
+    const filterValue = value.name.toLowerCase();
     return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 }
