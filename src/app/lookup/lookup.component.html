@@ -1,8 +1,15 @@
 <mat-form-field>
-    <mat-select placeholder="select ..." [formControl]="searchControl" (selectionChange)="onSelectChange($event.value)" (closed)="onClosed()">
-      <input [(ngModel)]="searchTxt" matInput placeholder="search">
-      <mat-option *ngFor="let option of filteredOptions | search : searchTxt" [value]="option">
-        {{ option.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  
+  <mat-select 
+    [formControl]="control"
+    [disableControl]="isDisabled"
+    [placeholder]="placeholder" 
+    (selectionChange)="onSelectChange($event.value)"
+    (closed)="onClosed()"
+    (opened)="onOpened()">
+    <input [(ngModel)]="searchTxt" matInput>
+    <mat-option *ngFor="let option of options$ | search : searchTxt | async " [value]="option">
+      {{ option.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

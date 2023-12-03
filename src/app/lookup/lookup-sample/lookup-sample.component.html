@@ -1,7 +1,11 @@
-<h1>Lookup Select with Material</h1>
-<lookup [options]=inputData (itemSelected)="onItemSelected($event)"></lookup>
-
-<div *ngIf="selectedItem">
-  <h2>Selected Item:</h2>
-  <p>{{ selectedItem.name }}</p>
-</div>
+<form [formGroup]="form">
+  <h1>Lookup Select with Material</h1>
+  <lookup [options$]=inputData$ [control]="form.controls['myLookupControl']" [isDisabled]=isLookupDisabled
+    [placeholder]=myPlaceholder (itemSelected)="onItemSelected($event)"></lookup>
+  <lookup [options$]=inputData1 [control]="form.controls['myLookupControl1']" [isDisabled]=isLookupDisabled
+    [placeholder]=myPlaceholder (itemSelected)="onItemSelected1($event)"></lookup>
+  <div *ngIf="selectedItem">
+    <h2>Selected Item:</h2>
+    <p>{{ selectedItem.name }}</p>
+  </div>
+</form>
