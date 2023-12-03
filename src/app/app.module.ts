@@ -44,11 +44,12 @@ import { LookupComponent } from './lookup/lookup.component';
 import { LookupSampleComponent } from './lookup/lookup-sample/lookup-sample.component';
 import { MatSelectModule } from '@angular/material/select';
 import { SearchPipe } from './lookup/search.Pipe';
-import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { RequestComponent } from './request/request.component';
-import { CustomMatPaginatorIntl } from './request/custom-mat-paginator-intl';
-import { RequestDialogComponent } from './request-dialog/request-dialog.component';
+//import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+//import { RequestComponent } from './request/request.component';
+//import { CustomMatPaginatorIntl } from './request/custom-mat-paginator-intl';
+//import { RequestDialogComponent } from './request-dialog/request-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DisableControlDirective } from './lookup/disableControl.Directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,8 +78,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     LookupComponent,
     LookupSampleComponent,
     SearchPipe,
-    RequestComponent,
-    RequestDialogComponent
+    DisableControlDirective,
+    //RequestComponent,
+    //RequestDialogComponent
   ],
   imports: [
     BrowserModule,

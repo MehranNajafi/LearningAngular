@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Item } from './item.model';
 import { FormControl } from '@angular/forms';
-import { config } from './config.model';
 import { Observable, map } from 'rxjs';
 import { pipe } from 'rxjs';
 
@@ -22,7 +21,6 @@ export class LookupComponent implements OnInit {
   filteredOptions: Item[] = [];
   filteredOptions$: Observable<Item[]>;
   searchTxt: any;
-  inputConfig: config;
 
   constructor() { }
 
